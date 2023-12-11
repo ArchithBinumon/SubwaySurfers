@@ -1,29 +1,44 @@
 import processing.core.PApplet;
 
 import javax.xml.stream.Location;
+import java.util.ArrayList;
 
 public class Hurdle {
     private double height;   // <-- make int
     private int lane;
     private int yCoord;
-    public void randomPlaceLow(){
-        //place at a random location
-    }
+    private int width;
+    private boolean alive;
+    private double percentChance;
+public Hurdle(int lane, int yCoord, int width) {
+    this.lane = lane;
+    this.yCoord = yCoord;
+    this.width = width;
+}
+public int randomLane(){
+    int random = (int)(Math.random()*3);
+    return random;
+}
+
+
+
     public void draw(PApplet window) {
-        if (height == 0) {
-            window.fill(255, 0, 0);
-        } else {
-            window.fill(0, 255, 0);
-        }
 
         if (lane == 0) {
-            window.rect(15, y, width,height);
+            window.rect(15, yCoord, width,yCoord+20);
         } else if (lane == 1) {
 
         }
     }
 
     public void update() {
+    this.yCoord+=5;
+    if (this.yCoord>800){
+        alive = false;
+    }
+    if (Math.random() < percentChance ){
+        lane = (int)(Math.random()*3+1);
+    }
         /*
         add 5 to the y coord
         if ( y is off the screen then ) {

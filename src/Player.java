@@ -3,31 +3,19 @@
 import javax.xml.stream.Location;
 
 public class Player {
-    private double playerSpeed;
-    private double speedIncreasePlayer;
-    private double height;
+   private String name;
     public int locationX;
     public int locationY;
     private boolean alive;
 
-    public Player(double playerSpeed, double height, double speedIncreasePlayer, int locationX, int locationY) {
-        this.playerSpeed = playerSpeed;
-        this.height = height;
-        this.speedIncreasePlayer = speedIncreasePlayer;
+    public Player( int locationX, int locationY, String name) {
+
         this.locationX = locationX;
         this.locationY = locationY;
 
     }
 
-    public void slide() {
-        height -= 5;
-        //change back after some amount of ticks
-    }
 
-    public void jump() {
-        height += 5;
-        //change back after some amount of ticks
-    }
 
 
     public void setLocationX() {
@@ -51,9 +39,6 @@ public class Player {
         alive = false;
     }
 
-    public void speedIncreasePlayer() {
-        playerSpeed += 1;//after every x ticks
-    }
 
 
 }

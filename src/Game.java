@@ -1,19 +1,17 @@
 import processing.core.PApplet;
 
 import javax.xml.stream.Location;
+import java.util.ArrayList;
 
 public class Game extends PApplet {
     // TODO: declare game variables
 
-    Player player = new Player(5, 10, 1, 225, 700);
+    Player player = new Player(225, 700, "Bobby");
 
-    /*
-    ArrayList<Hurdle> hurdles = new arraylist;
-     */
+    ArrayList<Hurdle> hurdles = new ArrayList<>();
 
     public void settings() {
-        size(450, 800);   // set the window size
-
+        size(700, 800);   // set the window size
     }
 
     @Override
@@ -34,9 +32,14 @@ public class Game extends PApplet {
         }
     }
 
+    public int randomLane() {
+        int random = (int) (Math.random() * 3);
+        return random;
+    }
+
     public void setup() {
         // TODO: initialize game variables
-        // add 1 or 3 or more hurdles to start
+        hurdles.add(new Hurdle(randomLane(),0,140));
     }
 
 
@@ -45,52 +48,20 @@ public class Game extends PApplet {
      * tick each object (have it update itself), and draw each object
      */
     public void draw() {
-        System.out.println(frameCount);
 
         background(255);    // paint screen white
         fill(0, 255, 0);          // load green paint color
         line(150, 0, 150, 800);
         line(300, 0, 300, 800);
+        line(450, 0, 450, 800);
         ellipse(player.locationX, player.locationY, 75, 75);
-//        ellipse(mouseX, mouseY, 60, 60);  // draw circle at mouse loc
-//        ellipse(mouseX - 80, mouseY, 60, 60);  // draw circle at mouse loc
-//        ellipse(mouseX + 80, mouseY, 60, 60);  // draw circle at mouse loc
-
+        text("Score: " + frameCount / 60, 475, 50);
+        textSize(40);
         /*
         loop over every Hurdle int he hurdles list:
              hurd.draw(this);
              hurd.update();
          */
-
-    }
-
-    // DELETE THIS
-    public void hurdles() {
-        int y = 120;
-        int random = (int) (Math.random() * 3 + 1);
-        switch (random) {
-            case 1:
-                rect(15, y, 120, 120);
-                y += 1;
-                for (int i = 0; i < 100; i++) {
-                    y += 5;
-                }
-                break;
-            case 2:
-                rect(165, y, 120, 120);
-                y += 1;
-                for (int i = 0; i < 100; i++) {
-                    y += 5;
-                }
-                break;
-            case 3:
-                rect(315, y, 120, 120);
-                y += 1;
-                for (int i = 0; i < 100; i++) {
-                    y += 5;
-                }
-                break;
-        }
 
     }
 
