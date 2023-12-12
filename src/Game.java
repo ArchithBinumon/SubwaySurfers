@@ -1,9 +1,6 @@
 import processing.core.PApplet;
-
-import javax.xml.stream.Location;
 import java.util.ArrayList;
 
-import static java.awt.SystemColor.window;
 
 public class Game extends PApplet {
     // TODO: declare game variables
