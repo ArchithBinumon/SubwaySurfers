@@ -1,53 +1,64 @@
 import processing.core.PApplet;
 
-import javax.xml.stream.Location;
 import java.util.ArrayList;
 
 public class Hurdle {
-    private double height;   // <-- make int
     private int lane;
     private int yCoord;
-    private int width;
+    private static int width;
     private boolean alive;
-    private double percentChance;
-public Hurdle(int lane, int yCoord, int width) {
-    this.lane = lane;
-    this.yCoord = yCoord;
-    this.width = width;
-}
-public int randomLane(){
-    int random = (int)(Math.random()*3);
-    return random;
-}
+    private static double percentChance = 0.1;
 
+    public Hurdle(int lane, int yCoord, int width) {
+        this.lane = lane;
+        this.yCoord = yCoord;
+        this.width = width;
+        this.alive = true;
+    }
+    public int getyCoord(){
+        return this.yCoord;
+    }
+    public int getWidth(){
+       int x = 0;
+        if (lane == 0) {
+            x = 15;
+        } else if (lane == 1) {
+            x = 165;
+        } else {
+            x = 315;
+        }
+        return x;
+    }
+
+    public int randomLane() {
+        int random = (int) (Math.random() * 3);
+        return random;
+    }
 
 
     public void draw(PApplet window) {
 
         if (lane == 0) {
-            window.rect(15, yCoord, width,yCoord+20);
+            window.rect(0, yCoord, width, 50);
         } else if (lane == 1) {
-
+            window.rect(150, yCoord, width, 50);
+        } else {
+            window.rect(300, yCoord, width, 50);
         }
     }
 
-    public void update() {
-    this.yCoord+=5;
-    if (this.yCoord>800){
-        alive = false;
-    }
-    if (Math.random() < percentChance ){
-        lane = (int)(Math.random()*3+1);
-    }
-        /*
-        add 5 to the y coord
-        if ( y is off the screen then ) {
-            alive = false;
+    public void update(ArrayList<Hurdle> hurdles) {
+        this.yCoord += 3;
+        if (this.yCoord > 800) {
+            hurdles.remove(this);
+        }
+        for (int i = 0; i < hurdles.size(); i++) {
+            Hurdle hurd = hurdles.get(i);
+//            if (!hurd.alive){
+//                hurdles.remove(i);
+//            }
         }
 
-        if (Math.random() < percentChance ) {
-            lane = random lane number from 0 to 3.
-        }
-         */
+
     }
 }

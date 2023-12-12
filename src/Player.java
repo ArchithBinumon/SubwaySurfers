@@ -1,12 +1,14 @@
 
 
 import javax.xml.stream.Location;
+import java.util.ArrayList;
 
 public class Player {
    private String name;
     public int locationX;
     public int locationY;
-    private boolean alive;
+    public boolean alive = true;
+    public ArrayList<Hurdle> hurdles = new ArrayList<>();
 
     public Player( int locationX, int locationY, String name) {
 
@@ -38,6 +40,8 @@ public class Player {
     public void die() {
         alive = false;
     }
+
+
 
 
 
