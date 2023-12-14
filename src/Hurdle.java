@@ -55,7 +55,7 @@ public class Hurdle extends PApplet {
         if (this.yCoord > 800) {
             hurdles.remove(this);
         }
-
-
     }
+
+
 }

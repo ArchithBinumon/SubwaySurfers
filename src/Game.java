@@ -100,13 +100,13 @@ public class Game extends PApplet {
         text("Score: " + frameCount / 60, 475, 50);
 
         textSize(12);
-        text("Press 'p' to Pause", 475,75);
-        text("Press 'r' to Reset", 475,100);
-        text("Press 'a'and 'd' to Move Left and Right", 475,125);
+        text("Press 'p' to Pause", 475, 75);
+        text("Press 'r' to Reset", 475, 100);
+        text("Press 'a'and 'd' to Move Left and Right", 475, 125);
 
         if ((player.alive == true) && player.paused == false) {
             for (int i = 0; i < hurdles.size(); i++) {
-                fill(255,0,56);
+                fill(255, 0, 56);
                 Hurdle hurd = hurdles.get(i);
                 hurd.draw(this);
                 hurd.update(hurdles);
@@ -116,7 +116,10 @@ public class Game extends PApplet {
             if (Math.random() * 10 < 0.15) {
                 int lane = (int) (Math.random() * 3);
                 hurdles.add(new Hurdle(lane, 0, 150));
+
             }
+
+
         }
         for (int i = 0; i < hurdles.size(); i++) {
             Hurdle hurd = hurdles.get(i);
@@ -136,11 +139,10 @@ public class Game extends PApplet {
                 int score = frameCount / 60;
                 score--;
                 fill(255, 0, 0);
-                textSize(30);
-                text("Score: " + score, 275, 400);
-                fill(255, 0, 0);
                 textSize(50);
                 text("YOU DIED", 235, 300);
+                textSize(30);
+                text("Score: " + score, 275, 400);
             }
         }
     }
