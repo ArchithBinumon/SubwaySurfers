@@ -1,5 +1,8 @@
 import processing.core.PApplet;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 
@@ -108,15 +111,18 @@ public class Game extends PApplet {
                 background(0);
                 int score = frameCount / 60;
                 score--;
+                fill(255, 0, 0);
                 text("Score: " + score, 290, 400);
                 fill(255, 0, 0);
                 text("YOU DIED", 290, 300);
-                fill(255, 0, 0);
+
 
             }
         }
 
     }
+
+
 
     public static void main(String[] args) {
         PApplet.main("Game");
