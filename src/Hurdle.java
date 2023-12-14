@@ -15,11 +15,13 @@ public class Hurdle {
         this.width = width;
         this.alive = true;
     }
-    public int getyCoord(){
+
+    public int getyCoord() {
         return this.yCoord;
     }
-    public int getWidth(){
-       int x = 0;
+
+    public int getWidth() {
+        int x = 0;
         if (lane == 0) {
             x = 15;
         } else if (lane == 1) {
@@ -51,12 +53,6 @@ public class Hurdle {
         this.yCoord += 3;
         if (this.yCoord > 800) {
             hurdles.remove(this);
-        }
-        for (int i = 0; i < hurdles.size(); i++) {
-            Hurdle hurd = hurdles.get(i);
-//            if (!hurd.alive){
-//                hurdles.remove(i);
-//            }
         }
 
 

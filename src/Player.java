@@ -8,6 +8,7 @@ public class Player {
     public int locationX;
     public int locationY;
     public boolean alive = true;
+    public boolean paused = false;
     public ArrayList<Hurdle> hurdles = new ArrayList<>();
 
     public Player( int locationX, int locationY, String name) {

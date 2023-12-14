@@ -1,4 +1,5 @@
 import processing.core.PApplet;
+
 import java.util.ArrayList;
 
 
@@ -16,18 +17,34 @@ public class Game extends PApplet {
     @Override
     public void keyPressed() {
         if (player.alive) {
-            if (keyPressed) {
+            if (keyPressed && !player.paused) {
                 if (key == 'a' || key == 'A') {
                     if (!(player.locationX < 100)) {
                         player.locationX -= 150;
                     }
                 }
             }
-            if (keyPressed) {
+            if (keyPressed && !player.paused) {
                 if (key == 'd' || key == 'D') {
                     if (!(player.locationX > 350)) {
                         player.locationX += 150;
                     }
+                }
+            }
+            if (keyPressed && !player.paused) {
+                if (key == 'r' || key == 'R') {
+                    frameCount = 0;
+                    hurdles.clear();
+                    player.setLocationX();
+
+                }
+            }
+            if (keyPressed) {
+                if (key == 'p' || key == 'P') {
+                    if (!player.paused) {
+                        player.paused = true;
+
+                    } else player.paused = false;
                 }
             }
         }
@@ -61,11 +78,12 @@ public class Game extends PApplet {
         }
         text("Score: " + frameCount / 60, 475, 50);
         textSize(40);
-        if (player.alive == true) {
+        if ((player.alive == true) && player.paused == false) {
             for (int i = 0; i < hurdles.size(); i++) {
                 Hurdle hurd = hurdles.get(i);
                 hurd.draw(this);
                 hurd.update(hurdles);
+
             }
 
             if (Math.random() * 10 < 0.15) {
@@ -73,10 +91,18 @@ public class Game extends PApplet {
                 hurdles.add(new Hurdle(lane, 0, 150));
             }
         }
+        for (int i = 0; i < hurdles.size(); i++) {
+            Hurdle hurd = hurdles.get(i);
+            hurd.draw(this);
+        }
+        if (player.paused) {
+            frameCount -= 1;
+
+        }
 
         for (int i = 0; i < hurdles.size(); i++) {
             Hurdle hurd = hurdles.get(i);
-            if (isColliding(player.locationX, player.locationY, hurd.getWidth(), hurd.getyCoord(), 75, 70, 20)) {
+            if (isColliding(player.locationX, player.locationY, hurd.getWidth(), hurd.getyCoord(), 37, 70, 20)) {
 
                 player.alive = false;
                 background(0);
@@ -85,7 +111,7 @@ public class Game extends PApplet {
                 text("Score: " + score, 290, 400);
                 fill(255, 0, 0);
                 text("YOU DIED", 290, 300);
-
+                fill(255, 0, 0);
 
             }
         }
@@ -94,6 +120,7 @@ public class Game extends PApplet {
 
     public static void main(String[] args) {
         PApplet.main("Game");
+
     }
 
 
