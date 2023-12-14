@@ -2,7 +2,7 @@ import processing.core.PApplet;
 
 import java.util.ArrayList;
 
-public class Hurdle {
+public class Hurdle extends PApplet {
     private int lane;
     private int yCoord;
     private static int width;
@@ -47,6 +47,7 @@ public class Hurdle {
         } else {
             window.rect(300, yCoord, width, 50);
         }
+
     }
 
     public void update(ArrayList<Hurdle> hurdles) {
