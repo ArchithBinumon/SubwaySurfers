@@ -75,7 +75,24 @@ public class Game extends PApplet {
         line(150, 0, 150, 800);
         line(300, 0, 300, 800);
         line(450, 0, 450, 800);
+
+
+        fill(112, 66, 20);
+        rect(20, 0, 20, 800);
+        rect(110, 0, 20, 800);
+        rect(170, 0, 20, 800);
+        rect(260, 0, 20, 800);
+        rect(320, 0, 20, 800);
+        rect(410, 0, 20, 800);
+        fill(194, 178, 128);
+        for (int i = 0; i <= 20; i++) {
+            rect(10, i * 40, 130, 20);
+            rect(160, i * 40, 130, 20);
+            rect(310, i * 40, 130, 20);
+        }
+        fill(21, 96, 189);
         ellipse(player.locationX, player.locationY, 75, 75);
+
         if (player.alive == false) {
             frameCount -= 1;
         }
@@ -83,6 +100,7 @@ public class Game extends PApplet {
         textSize(40);
         if ((player.alive == true) && player.paused == false) {
             for (int i = 0; i < hurdles.size(); i++) {
+                fill(0);
                 Hurdle hurd = hurdles.get(i);
                 hurd.draw(this);
                 hurd.update(hurdles);
@@ -115,13 +133,9 @@ public class Game extends PApplet {
                 text("Score: " + score, 290, 400);
                 fill(255, 0, 0);
                 text("YOU DIED", 290, 300);
-
-
             }
         }
-
     }
-
 
 
     public static void main(String[] args) {
